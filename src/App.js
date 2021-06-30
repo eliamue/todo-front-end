@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Todos from './Todos.js';
 import Login from './Login.js'
-import SignUp from './SignUp.js'
+import Signup from './Signup.js'
 import Homepage from './Homepage.js'
 
 export default class App extends Component {
@@ -25,6 +25,7 @@ export default class App extends Component {
           <header>
             { this.state.token && <div>welcome, user!!!</div> }
             { this.state.token && <Link to="/todos"><div>todos</div></Link> }
+            <Link to="/">Home</Link>
             <Link to="/login"><div>log in</div></Link>
             <Link to="/signup"><div>sign up</div></Link>
             <Link to="/todos"><div>todo list</div></Link>
@@ -43,7 +44,7 @@ export default class App extends Component {
               />
             <Route 
             exact path='/signup' 
-              render={(routerProps) => <SignUp 
+              render={(routerProps) => <Signup 
                 handleTokenChange={this.handleTokenChange} 
                 {...routerProps}/>} 
               />
