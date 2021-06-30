@@ -21,7 +21,7 @@ handlePasswordChange = e => {
     render() {
         return (
             <div>
-                {/* <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <label>
                         Email
                         <input onChange={this.handleEmailChange}/>
@@ -31,7 +31,7 @@ handlePasswordChange = e => {
                         <input onChange={this.handlePasswordChange}/>
                     </label>
                     <button>Sign up</button>
-                </form> */}
+                </form>
             </div>
         )
     }
