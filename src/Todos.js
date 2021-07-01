@@ -20,9 +20,8 @@ export default class Todos extends Component {
     handleSubmit = async e => {
         e.preventDefault();
         await addTodo(this.state.todo, this.props.token);
-        await this.fetchIt()
-        
-        
+        await this.fetchIt();
+        e.target.reset();
     }
 
     handleTodoChange = e => {

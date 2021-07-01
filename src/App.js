@@ -19,14 +19,14 @@ login = (token) => {
   localStorage.setItem('TOKEN', token)
 }
 
-logout = (token) => {
+logout = () => {
     this.setState({ token: '' })
     localStorage.setItem('TOKEN', '')
 }
 
   render() {
     return (
-      <div>
+      <div className="puppies">
         <Router>
           <header>
             { this.state.token && <div>welcome, user!!!</div> }
@@ -37,7 +37,7 @@ logout = (token) => {
             <Link to="/login"><div>Login</div></Link>
             <Link to="/signup"><div>Signup</div></Link>
             
-            <button onClick={() => this.login('')}>Logout</button>
+            <button onClick={() => this.logout}>Logout</button>
           </header>
 
           <Switch>

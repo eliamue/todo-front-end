@@ -1,11 +1,12 @@
-.Todos {
-    display: flex;
-    flex-direction: column;
-    background-color: pink;
+body {
+    background-color: blue;
 }
 
 .Todos-page {
     display: flex;
     flex-direction: column;
-    background-color: pink;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: blue;
 }
