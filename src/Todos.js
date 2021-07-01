@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { addTodo, completeTodo, getTodoList } from './fetch-utils'
+import './Todos.css'
 
 export default class Todos extends Component {
     state = {
@@ -19,18 +20,28 @@ export default class Todos extends Component {
     handleSubmit = async e => {
         e.preventDefault();
         await addTodo(this.state.todo, this.props.token);
-        await this.fetchIt()
-        
-        
+        await this.fetchIt();
+        e.target.reset();
     }
 
     handleTodoChange = e => {
         this.setState({ todo: e.target.value })
     }
+
+    handleLogout = (e) => {       
+        alert('You have signed out')
+        localStorage.clear()
+        this.setState({ 
+            token: '',
+            email: '',
+            password: '' 
+        })
+        window.location.href = '/signin'
+    }
     
     render() {
         return (
-            <div>
+            <div className="Todos-page">
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Todo: 
@@ -56,6 +67,7 @@ export default class Todos extends Component {
         )
             }
                 </div>
+                <button onClick={this.handleLogout}>Logout</button>
             </div>
         )
     }
