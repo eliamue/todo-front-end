@@ -9,6 +9,7 @@ import Todos from './Todos.js';
 import Login from './Login.js'
 import Signup from './Signup.js'
 import Homepage from './Homepage.js'
+import './App.css'
 
 export default class App extends Component {
   state = { token: localStorage.getItem('TOKEN') }

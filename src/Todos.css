@@ -1,0 +1,11 @@
+.Todos {
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
+}
+
+.Todos-page {
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
+}

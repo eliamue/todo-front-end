@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { addTodo, completeTodo, getTodoList } from './fetch-utils'
+import './Todos.css'
 
 export default class Todos extends Component {
     state = {
@@ -30,7 +31,7 @@ export default class Todos extends Component {
     
     render() {
         return (
-            <div>
+            <div className="Todos-page">
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Todo: 

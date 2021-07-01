@@ -40,3 +40,9 @@
 .not-completed:hover {
   color: blue;
 }
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  background-color: teal;
+}
