@@ -13,10 +13,15 @@ import Homepage from './Homepage.js'
 export default class App extends Component {
   state = { token: localStorage.getItem('TOKEN') }
 
-  handleTokenChange = (myToken) => {
-    this.setState({ token: myToken });
-    localStorage.setItem('TOKEN', myToken);
-  }
+login = (token) => {
+  this.setState({ token })
+  localStorage.setItem('TOKEN', token)
+}
+
+logout = (token) => {
+    this.setState({ token: '' })
+    localStorage.setItem('TOKEN', '')
+}
 
   render() {
     return (
@@ -24,34 +29,38 @@ export default class App extends Component {
         <Router>
           <header>
             { this.state.token && <div>welcome, user!!!</div> }
+
             { this.state.token && <Link to="/todos"><div>todos</div></Link> }
+
             <Link to="/">Home</Link>
-            <Link to="/login"><div>log in</div></Link>
-            <Link to="/signup"><div>sign up</div></Link>
-            <Link to="/todos"><div>todo list</div></Link>
-            <button onClick={() => this.handleTokenChange('')}>logout</button>
+            <Link to="/login"><div>Login</div></Link>
+            <Link to="/signup"><div>Signup</div></Link>
+            
+            <button onClick={() => this.login('')}>Logout</button>
           </header>
+
           <Switch>
           <Route 
             exact path='/' 
               render={(routerProps) => <Homepage
-                handleTokenChange={this.handleTokenChange} 
+                login={this.login} 
                 {...routerProps}/>} 
               />
             <Route exact path='/login' render={(routerProps) => <Login 
-                handleTokenChange={this.handleTokenChange} 
+                login={this.login} 
                 {...routerProps} />} 
               />
             <Route 
             exact path='/signup' 
               render={(routerProps) => <Signup 
-                handleTokenChange={this.handleTokenChange} 
+                login={this.login} 
                 {...routerProps}/>} 
               />
           <Route 
             exact path='/todos' 
               render={(routerProps) => <Todos 
-                handleTokenChange={this.handleTokenChange} 
+                login={this.login} 
+                token={this.state.token}
                 {...routerProps}/>} 
               />
           </Switch>

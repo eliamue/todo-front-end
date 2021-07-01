@@ -17,12 +17,21 @@ export async function login() {
     
 }
 
-export async function getTodoList() {
-    
+export async function getTodoList(token) {
+    const data = await request
+    .get(`${URL}/api/todos`)
+    .set('Authorization', token)
+
+
+    return data.body;
 }
 
-export async function addTodo() {
-    
+export async function addTodo(todo, token) {
+    const data = await request
+    .post(`${URL}/api/todos`)
+    .send({ todo: todo })
+    .set('Authorization', token)
+    return data.body;
 }
 
 export async function completeTodo() {
