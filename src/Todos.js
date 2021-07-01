@@ -36,7 +36,7 @@ export default class Todos extends Component {
             email: '',
             password: '' 
         })
-        window.location.href = '/signin'
+        window.location.href = '/'
     }
     
     render() {
