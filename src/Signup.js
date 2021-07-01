@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { signup } from './fetch-utils';
 
 export default class Signup extends Component {
     state = {
@@ -6,14 +7,19 @@ export default class Signup extends Component {
         password: ''
     }
 
-handleSubmit = e => {
+handleSubmit = async e => {
     e.preventDefault();
-    alert(this.state.email)
+
+    const token = await signup(this.state.email, this.state.password);
+    
+    this.props.login(token)
+    this.props.history.push('/todos')
 }
 
 handleEmailChange = e => {
     this.setState({ email: e.target.value })
 }
+
 handlePasswordChange = e => {
     this.setState({ password: e.target.value })
 }
@@ -24,11 +30,11 @@ handlePasswordChange = e => {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Email
-                        <input onChange={this.handleEmailChange}/>
+                        <input type="email" onChange={this.handleEmailChange}/>
                     </label>
                     <label>
                         Password
-                        <input onChange={this.handlePasswordChange}/>
+                        <input type="password" onChange={this.handlePasswordChange}/>
                     </label>
                     <button>Sign up</button>
                 </form>
