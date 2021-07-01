@@ -27,6 +27,17 @@ export default class Todos extends Component {
     handleTodoChange = e => {
         this.setState({ todo: e.target.value })
     }
+
+    handleLogout = (e) => {       
+        alert('You have signed out')
+        localStorage.clear()
+        this.setState({ 
+            token: '',
+            email: '',
+            password: '' 
+        })
+        window.location.href = '/signin'
+    }
     
     render() {
         return (
@@ -56,6 +67,7 @@ export default class Todos extends Component {
         )
             }
                 </div>
+                <button onClick={this.handleLogout}>Logout</button>
             </div>
         )
     }

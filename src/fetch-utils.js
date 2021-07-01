@@ -15,7 +15,7 @@ export async function signup(email, password) {
 
 export async function login(email, password) {
     const data = await request
-        .post(`${URL}/auth/login`)
+        .post(`${URL}/auth/signin`)
         .send({
             email: email,
             password: password,
@@ -23,6 +23,17 @@ export async function login(email, password) {
     
     return data.body.token;
 }
+
+// export async function logout() {
+//     const data = await request
+//         .get(`${URL}/signin`)
+//         .send({
+//             email: '',
+//             password: '',
+//         })
+    
+//     return data.body;
+// }
 
 export async function getTodoList(token) {
     const data = await request
